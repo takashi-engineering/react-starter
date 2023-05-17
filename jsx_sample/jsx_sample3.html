@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>React</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    </head>
+    <body>
+        <h1 class="br-primary text-white display-4">React</h1>
+        <div class="container mt-3">
+            <div id="root"></div>
+        </div>
+        <script type="text/babel">
+            // #rootのElementオブジェクトを取得
+            let dom = document.querySelector('#root')
+
+            let title = "React"
+            let message = "メッセージです"
+            let content_true = "trueの時表示されるメッセージ"
+            let content_true_2 = "trueの時表示されるメッセージ2"
+            let content_false = "falseの時表示されるメッセージ"
+
+            let num = 9
+            let flg = num > 10;
+
+            // 仮想DOMのElementオブジェクトを作成
+            let element = (
+                <div>
+                    <h4>{title}</h4>
+                    <h3>{message}</h3>
+                {flg ?
+                    <div className="alert alert-primary mt-3">
+                        <p>{content_true}</p>
+                    </div>
+                :
+                    <div className="alert alert-secondary mt-3">
+                        <p>{content_false}</p>
+                    </div>
+                }
+                {num > 5 &&
+                    <div className="alert alert-warning mt-3">
+                        <p>{content_true}</p>
+                    </div>
+                }
+                </div>
+            )
+            
+            // 仮想DOMをレンダリング
+            ReactDOM.render(element, dom)
+        </script>
+    </body>
+</html>
